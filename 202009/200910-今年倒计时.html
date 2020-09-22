@@ -1,0 +1,29 @@
+<html>
+
+<head>
+    <title>倒计时</title>
+</head>
+
+<body>
+    <p></p>
+    <script>
+        const year = (new Date()).getYear() + 1900;
+        const nextYear = new Date(`${year+1}-01-01 00:00:00`);
+        const p = document.querySelector('p');
+
+        function count() {
+            let diff = ((nextYear - new Date()) / 1000) >> 0;
+            const days = (diff / (24 * 60 * 60)) >> 0;
+            diff = diff % (24 * 60 * 60);
+            const hours = (diff / (60 * 60)) >> 0;
+            diff = diff % (60 * 60);
+            const minutes = (diff / 60) >> 0;
+            const seconds = diff % 60;
+            p.innerHTML = `${year}年还剩${days}天${hours}时${minutes}分${seconds}秒`;
+        }
+        setInterval(count, 1000);
+        // count();
+    </script>
+</body>
+
+</html>

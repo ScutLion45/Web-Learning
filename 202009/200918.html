@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <title>200918</title>
+    <!-- <style></style> -->
+  </head>
+  <body>
+    <input type="text" name="test" id="test">
+    <p id="value"></p>
+    <p id="data"></p>
+    <script>
+      const test = document.querySelector('#test');
+      const pV = document.querySelector('#value');
+      const pD = document.querySelector('#data');
+      function onKeyPress(event) {
+        console.log(event, event.data/* 每次键入的字符 */);
+        pV.textContent = event.srcElement.value;
+        pD.textContent = event.data;
+        event.preventDefault(); // 无效，因为input事件的Cancelable为false
+      }
+      test.addEventListener('input', onKeyPress);
+      test.onkeydown = function () { console.log('keydown', test.value); e.preventDefault; };
+      test.onkeyup = function (e) { console.log('keyup', test.value); };
+    </script>
+  </body>
+</html>

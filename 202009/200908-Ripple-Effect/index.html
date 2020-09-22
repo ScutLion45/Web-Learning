@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Button Ripple Effect</title>
+  <style>
+    .btn {
+      padding: 12px 50px;
+      border: none;
+      /* border-radius: 5px; */
+      
+      background-color: rgb(24, 103, 192);
+      color: #fff;
+      font-size: 16px;
+      
+      outline: none;
+      user-select: none;
+      cursor: pointer;
+      
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 3px 3px -2px rgba(0,0,0,.2); 
+    }
+    
+    .btn span {
+      position: absolute;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.3);
+      
+      width: 100px;
+      height: 100px;
+      margin-top: -50px;
+      margin-left: -50px;
+      
+      animation: ripple ease 1s;
+      opacity: 0;
+    }
+    
+    @keyframes ripple {
+      from {
+        opacity: 1;
+        transform: scale(0);
+      }
+      to {
+        opacity: 0;
+        transform: scale(10);
+      }
+    }
+    
+  </style>
+</head>
+
+<body>
+  <div style="height: 100px; overflow: scroll">
+    <p>祼佴奾蕧腛蕅伝一喵袹秫姃宁柦兀，腶寪亍佴挋塱祅刉丌朊墘挓丮虭。暀匋冱廩萿篧伂一椆啑秮礿匜洿亍，趓跙兀迒胗綃佽玊亍穸摽恞仉侇。艵姃扙氃蜋朣阤一愓剭烚枅圣柈丌，痷菀兀怮苬塱怌刌丌泃榞羑仉穻。笴一柉娵噅搉屮熗錝勼，釮乇洿珽酡遄屮踀巿犰。腊芡阣篧煔艗伂一渟崦罛泬戉炡亍，楎絎亍芩柲鉖侉阞亍皯愻柣旡芮。旡娙姀掑恦釂椴搕邛巟种岈宕矷玔痸屮怭箎剻。渜岵襾膧嗏螣艽一愃淽孬盳氻垔丌，壾硢兀矹柅嫍怳汃亍囹嫟俓圠戽。崦一峞捭鈗搐屮禊暻爿，琀乜胊偑筇筰乇僦卬玊。
+
+梮一柧荵雰蝆丌慲篕旡，軗亍洀笪喏葴屮膆厹屴。萓矺扠諢暋糑扢一蛘脥剞怗尻珌乇，飹菮丌沓昶痭彾阞屮泇膃袃夃呡。蛩泲仴趥歁諲伢一揌訞栺呾氕柟丌，輁堛亍阽珇綌杻帄丌岢褋恟丱怚。蛜咑旮霐塓獥网一猌梪浺呿尒羑兀，蓅堞丌芺珇楱怍夯兀怦榱毖冇侗。脢一柫梏蛣棰亍愬澼仉，婑丌邽蚻觝嫊乇馜旡屳。趄佮灱橉搳墿囟一喑郪袧呥尕峊丌，雎腍屮虯珫楢泃氿屮怑嫕恉丮迒。悐一姤牿揙歁屮毾鴩亓，捑丌珫釳舿皙屮箘巿仜。堳抾忔閾睒嶭奻一愊捭倞妴圣昹乜，鄍菤乇舠剄瘐肏戉屮殀僠矨夃岣。菫怉灱蕵犍鮕庄一揈梌唎坳仨柘兀，蛖渹乜侔恞嗩氝尒乇阼嵽咺圠芛。
+
+幁妴甪幯艉諴冱一婼焄拲祅玊牉乇，溟掾乜徂垤痻怮尕亍侜馝昹勼玡。朁昈旯憨萹膦伬一梴埮屔芤夯姳屮，嗀琡丌泙柦酮姃屴丌忞禗狤仈舠。喓盵扠憌搠燁灱一渼掅砳帗尻衭亍，嗄硭屮坭衿尟邴宄兀旻銋狟仈肏。猒泃幵凞祹膰扢一衖唼涄舠氕苙乜，獀鈀屮肸紁硹邲庂兀芧漃帤夬呫。爿栻佫罣柅雥蜅嗈刐扤秖伻芤坶抈傴兀盳鄟滀。秷一洇琀稄罧乜嫚擃旡，袷乜笀婓軴翛乇劁卬夗。毌袨朊掞柈蠵遉嗕伀汆泚犺岥泹汦裚乜虮幘楸。堮怊灱踸溰閽邛一犅郯倞姏宁牰乇，傿腃丌怲峉銢宓尕亍佮禘宬气芛。尐倰泹镺疪灡蒏萺甪庄侻囥岯邳杅艀兀攽蒹絻。
+
+婕一炡翏詈犐亍墂橝殳，猏亍姼莝媋鉰乜滮尐匜。秶一洨梜喡搛兀獌蕅殳，眹兀欨猈喣殛乜綮厹戉。萑帔奿噲閟濎网一睍梫紝昅氶挀兀，煢揋亍曶玶矠宓尻兀泃慲俇亓岭。菛泀伄廧剼瞢旮一菣捽帨芼尻柲乜，靷菹兀姀殶煋苃肊兀岝蜰彖气侘。丮蚢侒晛俛鱢暋搛囡扤恘庌盱岤扰嫍屮狚槎搛。寀一胊莙絭楑丌甂瞢毌，畤亍垕涴詍嗍丌嘒圠尒。徖一姼唰菶鉌乇禔鋻毌，袾乇郋笴媕嵲屮瑢卬圢。
+
+痤枔优橉溏輴夼一棝离埆泑仩柅丌，犑缿亍芫挋楌祂犮丌佽榾牮爿妵。丱栴瓨淂氡禶豋綔汜汆衁玒芚侜戺搊亍岤蜦鈱。焟泀伅錉萳頵扡一聑莏娕泏尕昶兀，尳棇乇陃衲絼昍宄屮侁綝柜勼阽。偩一苕桽觛溲兀塼艗圠，笘亍郱晙惼裶兀戫圠尕。惙一斪埮敤嗈乇駇輲尐，軠屮挏翍傇觜乇靻圠圢。亓荎帙聇籸鱣稓触妀夼茀扱佶佸抈葟兀杶銎逿。圠烢毞唰迣魙暕楅刓攷畈汦秅怉刡豦屮穻榐筤。逜一咰偊椐葠乇匰磛丏，莇屮柎翐寍羦乜摛丱汃。痦呧汊膧瘐瞚妀一脺崰悜抯屴茀屮，筡觚亍怋砏媴矷仝丌侂搿祋殳抳。</p>
+    <button class="btn">Click Me</button>
+  </div>
+</body>
+<script>
+  const btn = document.querySelector('.btn');
+  function addRipple(e) {
+    // Create a span element
+    let ripple = document.createElement('span');
+    // Add `ripple` class to it
+    ripple.classList.add('ripple');
+    // Add span to the button
+    this.appendChild(ripple);
+    
+    // Get RELATIVE position of x and y
+    // https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getBoundingClientRect
+    const rect = this.getBoundingClientRect();
+    let x = e.clientX - rect.left;
+    let y = e.clientY - rect.top;
+    
+    // Position the ripple
+    ripple.style.left = `${x}px`;
+    ripple.style.top = `${y}px`;
+    
+    // Remove span after 0.3s
+    setTimeout(() => {
+      ripple.remove();
+    }, 20000);
+  };
+  
+  function throttle(fn) {
+    let canRun = true;
+    return function (...args) {
+      if (!canRun) return;
+      canRun = false;
+      setTimeout(() => {
+        fn.apply(this, args);
+        canRun = true;
+        console.log('canRun');
+      }, 200);
+    }
+  }
+  
+  const thAddRipple = throttle(addRipple);
+  btn.onclick = thAddRipple;
+  // btn.onclick = addRipple;
+</script>
+
+</html>

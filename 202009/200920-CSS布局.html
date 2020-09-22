@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <title>200920-CSS布局</title>
+    <style>
+      .container { width: 500px; height: 500px; padding: 0; }
+      .wp {
+        /* width: 100%; */
+        /* height: 100%; */
+        display: table;
+        text-align: center;
+        border: 1px solid red;
+      }
+      .box {
+        display: table-cell;
+        border: 1px solid blue;
+        vertical-align: middle;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="wp">
+        <div class="box">123123</div>
+      </div>
+    </div>
+    <!-- <script></script> -->
+  </body>
+</html>
