@@ -1,0 +1,85 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  font-size: 16px;
+  font-family: sans-serif;
+  line-height: 1.8em;
+  color: #666;
+}
+
+/* .pimg-* */
+.pimg {
+  position: relative;
+  opacity: 0.7;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* 核心代码 */
+}
+
+/* section */
+.section {
+  text-align: center;
+  padding: 50px 80px;
+}
+
+.section-light {
+  background: #f4f4f4;
+  color: #666;
+}
+
+.section-dark {
+  background: #282134;
+  color: #ddd;
+}
+
+/* .pimg-1 */
+.pimg-1 {
+  background-image: url('img/bg-1.jpg');
+  min-height: 100%;
+}
+
+/* .pimg-2 */
+.pimg-2 {
+  background-image: url('img/bg-2.jpg');
+  min-height: 400px;
+}
+
+/* .pimg-3 */
+.pimg-3 {
+  background-image: url('img/bg-3.jpg');
+  min-height: 400px;
+}
+
+/* .pimg-4 */
+.pimg-4 {
+  background-image: url('img/bg-4.jpg');
+  min-height: 100%;
+}
+
+/* .ptext */
+.ptext {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  color: #000;
+  font-size: 27px;
+  letter-spacing: 8px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.pimg-1 .ptext .border,
+.pimg-4 .ptext .border {
+  background: #111;
+  color: #fff;
+  padding: 20px;
+}
+
+/* 移动端取消视差效果 */
+@media(max-width: 500px) {
+  .pimg {
+    background-attachment: scroll;
+  }
+}

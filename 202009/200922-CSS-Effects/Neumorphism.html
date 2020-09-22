@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"></meta>
+  <title>Neumorphism</title>
+  <style>
+    html, body { width: 100%; height: 100%; padding: 0; margin: 0; }
+    :root {
+      --clr: #b9cdda;
+    }
+    body {
+      display: flex;
+      justify-content: center;  /* 垂直居中 */
+      align-items: center;      /* 水平对齐 */
+      align-content: center;    /* 多行时紧凑 */
+      flex-wrap: wrap;
+      background: var(--clr);
+    }
+    div.neumo {
+      width: 200px;
+      height: 200px;
+      /* border: 1px solid transparent; */
+      border-radius: 20px;
+      margin: 25px 50px;
+      text-align: center;
+    }
+    /* 文字居中 */
+    div.neumo span {
+      height: 50%;
+    }
+    div.neumo span::before {
+      display: inline-block;
+      content: '';
+      height: 100%;
+      vertical-align: middle;
+    }
+    /* 平面突起 */
+    div.flat {
+      background: var(--clr);
+      box-shadow: 20px 20px 40px #94a4ae,
+                  -20px -20px 40px #def6ff;
+    }
+    /* 凹陷平面 */
+    div.pressed {
+      background: var(--clr);
+      box-shadow: inset 20px 20px 40px #94a4ae,
+                  inset -20px -20px 40px #def6ff;
+    }
+    /* 凹突起 */
+    div.concave {
+      background: linear-gradient(145deg, #a7b9c4, #c6dbe9);
+      box-shadow: 20px 20px 40px #94a4ae,
+                  -20px -20px 40px #def6ff;
+    }
+    /* 凸突起 */
+    div.convex {
+      background: linear-gradient(145deg, #c6dbe9, #a7b9c4);
+      box-shadow: 20px 20px 40px #94a4ae,
+                  -20px -20px 40px #def6ff;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="neumo flat"><span>FLAT</span></div>
+  <div class="neumo pressed"><span>PRESSED</span></div>
+  <div class="neumo concave"><span>CONCAVE</span></div>
+  <div class="neumo convex"><span>CONVEX</span></div>
+  <!-- <script></script> -->
+</body>
+</html>
