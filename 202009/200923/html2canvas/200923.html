@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>200923-html2canvas</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      min-height: 50vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    :root {
+      --orange: rgb(254,154,0);
+    }
+
+    #capture {
+      width: 400px;
+      height: 400px;
+      max-width: 400px;
+      max-height: 400px;
+      background: #000;
+      color: #fff;
+      margin: 20px;
+      /* 自动换行 */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+      flex-wrap: wrap;
+      /* 文字居中，溢出隐藏 */
+      overflow: hidden;
+      text-align: center;
+    }
+
+    #capture .text {
+      outline: none;
+      font-size: 3em;
+      /* height: 4.5em; */
+      padding: 5px 10px;
+      margin: 15px 0;
+      font-weight: 600;
+      letter-spacing: -1px;
+    }
+
+    #capture .text:nth-child(1) {
+      background: #000;
+      /* color: #fff; */
+    }
+
+    #capture .text:nth-child(2) {
+      background: var(--orange);
+      color: #000;
+      border-radius: 8px;
+    }
+
+    /* .desp */
+    .desp {
+      color: #999;
+      font-size: 12px;
+      user-select: none;
+      margin: 0 0 20px;
+    }
+
+    /* #btn */
+    #btn {
+      outline: none;
+      font-size: 0.8em;
+      background: #000;
+      color: #fff;
+      border: 2px solid #000;
+      border-radius: 5px;
+      padding: 8px 15px;
+      cursor: pointer;
+      user-select: none;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
+      transition: .5s;
+      /* 定位 */
+      position: relative;
+      z-index: 1;
+    }
+
+    #btn:hover {
+      box-shadow: 0 10px 35px rgba(0, 0, 0, .6);
+    
+    }
+
+    #btn span {
+      z-index: 12;
+      transition: 1s;
+    }
+    #btn:hover .left {
+      /* background: #000; */
+      color: #000;
+    }
+    #btn .left {
+      /* background: transparent; */
+      /* color: #fff; */
+      border-radius: 4px;
+      padding: 0px 8px;
+      margin-right: 2.5px;
+    }
+    #btn .right {
+      /* background: transparent; */
+      color: #000;
+      /* border-radius: 4px; */
+      padding: 0px 5px;
+      margin-left: 2.5px;
+    }
+
+    #btn::after {
+      content: '图片';
+      width: 2em;
+      user-select: none;
+      background: var(--orange);
+      color: var(--orange);
+      border-radius: 4px;
+      padding: 0px 8px;
+      /* 定位 */
+      position: absolute;
+      top: 8.5px; /* (39.2 - 23.2) * 0.5 + 0.5 */
+      right: 12.5px;
+      z-index: -1;
+      /* transform: scale(10); */
+      transition: .7s ease;
+    }
+
+    #btn:hover::after {
+      transform: scale(10);
+    }
+
+
+  </style>
+</head>
+<body>
+  <div id="capture">
+    <span class="text" contenteditable>Scut</span>
+    <span class="text" contenteditable>Lion45</span>
+  </div>
+  <span class="desp">- 上方直接编辑文字，点击按钮导出图片 -</span>
+  <button id="btn" onclick="saveImage()"><span class="left">导出</span><span class="right">图片</span></button>
+  <script type="text/javascript" src="html2canvas.min.js"></script>
+  <script type="text/javascript">
+    const body = document.body;
+    var convert = (function() {
+      if (html2canvas) {
+        return function() {
+          html2canvas(document.querySelector("#capture")).then(canvas => {
+            // 替换原canvas
+            let oldCanvas = document.querySelector("body canvas");
+            if (oldCanvas) {
+              oldCanvas = body.replaceChild(canvas, oldCanvas);
+              oldCanvas.remove();
+            } else {
+              body.appendChild(canvas);
+            }
+          });
+        }
+      } else {
+        return function () {
+          alert('DO NOt support html2canvas');
+        }
+      }
+    })();
+    var saveImage = (function () {
+      if (html2canvas) {
+        return function () {
+          html2canvas(document.querySelector("#capture")).then(canvas => {
+            const a = document.createElement('a');
+            a.href = canvas.toDataURL();
+            a.download = `${getTime()}.png`;
+            a.click();
+          });
+        }
+      } else {
+        return function () {
+          alert('DO NOt support html2canvas');
+        }
+      }
+    })();
+    function getTime() {
+      const now = new Date();
+      let yy = now.getFullYear();
+      let mm = now.getMonth(); mm = mm < 10 ? `0${mm}` : mm;
+      let dd = now.getDate(); dd = dd < 10 ? `0${dd}` : dd;
+      let hh = now.getHours(); hh = hh < 10 ? `0${hh}` : hh;
+      let MM = now.getMinutes(); MM = MM < 10 ? `0${MM}` : MM;
+      let ss = now.getSeconds(); ss = ss < 10 ? `0${ss}` : ss;
+      return `${yy}-${mm}-${dd}_${hh}-${MM}-${ss}`;
+    }
+  </script>
+</body>
+</html>
