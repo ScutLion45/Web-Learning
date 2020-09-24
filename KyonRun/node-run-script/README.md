@@ -8,6 +8,7 @@
 > - [`child_process.spwan()`](http://nodejs.cn/api/child_process.html#child_process_child_process_spawn_command_args_options)
 > - [`stream.Readable`](http://nodejs.cn/api/stream.html#stream_class_stream_readable)
 > - [Node.js Express框架](https://www.runoob.com/nodejs/nodejs-express-framework.html)
+> - [baryon/tracer: A powerful and customizable logging library for node.js](https://github.com/baryon/tracer)
 
 ### Setup
 
@@ -16,4 +17,5 @@
 ### Run
 
 `[1] $ node app.js`
+
 `[2] $ curl http://localhost:3018/hello-world`
