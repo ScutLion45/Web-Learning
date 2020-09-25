@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>KyonRun</title>
+  <!-- <link rel="stylesheet" href="css/style.css"> -->
+  <!-- <style></style> -->
+</head>
+<body>
+  KyonRun
+  <textarea id="code"></textarea>
+  <button id="run">Run</button>
+  <textarea id="result" readonly></textarea>
+  <script src="js/jquery.min.js"></script>
+  <script type="text/javascript">
+    console.log($.fn.jquery);
+    $('#run').click(() => {
+      $.post('/run', {
+        name: 'KyonRun接口测试',
+        code: $('#code').val(),
+      },
+      (resp, status) => {
+        console.log(resp);
+        $('#result').text(resp.data);
+      });
+    });
+  </script>
+</body>
+</html>

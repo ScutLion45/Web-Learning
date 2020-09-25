@@ -15,6 +15,13 @@ app.get('/:id', (req, res) => {
   execute(id, res).then();
 });
 
+app.get('/test/:id', (req, res) => {
+  const { id } = req.params;
+  res.send(`test_${id} #1`);
+  // send只会执行一次，并会报错：Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+  // res.send(`test_${id} #2`);
+});
+
 const pidDict = {};
 
 /**
@@ -45,23 +52,23 @@ async function execute(id, res) {
 
   handle.stdout.on('data', (data) => {
     readable.push(`\n${data}`);
-    getLogger(filePath).log(`\n${data}`);
+    // getLogger(filePath).log(`\n${data}`);
   });
 
   handle.stderr.on('data', (data) => {
-    getLogger(filePath).warn(`\n${data}`);
+    // getLogger(filePath).warn(`\n${data}`);
     readable.push(`\n${data}`);
   });
 
   handle.on('error', (code) => {
-    getLogger(filePath).error(`child process error with information: \n${code}`);
+    // getLogger(filePath).error(`child process error with information: \n${code}`);
     readable.push(`child process error with information: \n${code}`);
     delete pidDict[id];
-    readable.push(null);
+    readable.push(null);  // null表示读取结束
   });
 
   handle.on('close', (code) => {
-    getLogger(filePath).log(`child process close with code ${code}`);
+    // getLogger(filePath).log(`child process close with code ${code}`);
     delete pidDict[id];
     readable.push(null);
   });
