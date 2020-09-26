@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    #container .kyon-run-editor {
+      width: 100% !important;
+    }
+    #container .kyon-run-editor .overflow-guard {
+      width: 100% !important;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container" style="width:100%;height:300px;border:0"></div>
+  <script src="../node_modules/monaco-editor/min/vs/loader.js"></script>
+  <script>
+    const body = document.body;
+    const container = document.querySelector("#container");
+    let editor = null;
+    const defaultOptions = {
+      // value: ['function x() {', '\tconsole.log("Hello world!");', '}'].join('\n'),
+      language: 'javascript',
+      theme: 'vs-dark', // 'vs'(default), 'vs-dark', 'hc-dark'
+      minimap: {
+        enabled: false,
+      },
+      extraEditorClassName: 'kyon-run-editor',
+      wordWrap: 'on',
+      automaticLayout: true,
+    };
+
+    require.config({ paths: { vs: '../node_modules/monaco-editor/min/vs' } });
+
+    require(['vs/editor/editor.main'], function () {
+      editor = monaco.editor.create(container, {
+        ...defaultOptions,
+        value: ['function x() {', '\tconsole.log("Hello world!");', '}'].join('\n'),
+      });
+    });
+
+    function changeTheme(theme) {
+      var newTheme = (theme === 1 ? 'vs-dark' : (theme === 0 ? 'vs' : 'hc-black'));
+      if (editor) {
+        editor.updateOptions({
+          'theme': newTheme
+        });
+        // editor.setTheme(newTheme)
+      }
+    }
+
+  </script>
+</body>
+
+</html>
