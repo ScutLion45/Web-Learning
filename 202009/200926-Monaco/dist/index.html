@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Monaco Resize</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    #main-container {
+      width: 100%;
+      height: 100%;
+      background: #e6e6e6;
+      overflow: hidden;
+      display: flex;
+    }
+
+    #editor-container {
+      /* width: calc(30% - 5px); */
+      min-width: 250px;
+      /* height: 100%; */
+      background: skyblue;
+      margin: 0;
+      /* overflow-y: auto; */
+      /* float: left; */
+    }
+
+    #resize {
+      width: 5px;
+      height: 100%;
+      background: #fff;
+      cursor: w-resize;
+      margin: 0;
+      /* float: left; */
+    }
+
+    #result-container {
+      /* width: 70%; */
+      min-width: 150px;
+      /* height: 100%; */
+      background: tomato;
+      margin: 0;
+      /* overflow-y: auto; */
+      /* float: right; */
+    }
+  </style>
+</head>
+<body>
+  <div id="main-container">
+    <div id="editor-container" style="width: calc(50% - 2.5px); height: 100%"></div>
+    <div id="resize"></div>
+    <div id="result-container" style="width: calc(50% - 2.5px); height: 100%"></div>
+  </div>
+  <script type="text/javascript">
+    const resize = document.getElementById("resize");
+    const editorContainer = document.getElementById("editor-container");
+    const resultContainer = document.getElementById("result-container");
+    const mainContainer = document.getElementById("main-container");
+
+    // config resize
+    resize.onmousedown = function (e) {
+      const startX = e.clientX;
+      resize.left = resize.offsetLeft;
+      document.onmousemove = function (e) {
+        const endX = e.clientX;
+        let moveLen = resize.left + (endX - startX);
+        const boxWidth = mainContainer.clientWidth;
+        const maxT = boxWidth - resize.offsetWidth;
+        if (moveLen < 150) moveLen = 150;
+        if (moveLen > maxT - 150) moveLen = maxT - 150;
+        // resize.style.left = moveLen;
+        editorContainer.style.width = `${100 * moveLen / boxWidth}%`;
+        resultContainer.style.width = `${100 * (boxWidth - moveLen - 5) / boxWidth}%`;
+      };
+      document.onmouseup = function (e) {
+        document.onmousemove = null;
+        document.onmouseup = null;
+        resize.releaseCapture && resize.releaseCapture();
+      };
+      resize.setCapture && resize.setCapture();
+      return false;
+    };
+  </script>
+  <script src="../node_modules/monaco-editor/min/vs/loader.js"></script>
+  <script>
+    let editor = null;
+    const defaultOptions = {
+      // value: ['function x() {', '\tconsole.log("Hello world!");', '}'].join('\n'),
+      language: 'javascript',
+      theme: 'vs-dark', // 'vs'(default), 'vs-dark', 'hc-dark'
+      minimap: {
+        enabled: false,
+      },
+      extraEditorClassName: 'kyon-run-editor',
+      wordWrap: 'on',
+      automaticLayout: true,
+      padding: {
+        top: 10,
+      },
+    };
+    
+    // /*
+    require.config({
+      paths: { vs: '../node_modules/monaco-editor/min/vs' },
+    });
+
+    require(['vs/editor/editor.main'], function () {
+      editor = monaco.editor.create(editorContainer, {
+        ...defaultOptions,
+        value: ['function x() {', '  console.log("Hello world!");', '}'].join('\n'),
+      });
+    });
+    // */
+  </script>
+  <!-- <script src="app.js" type="module"></script> -->
+</body>
+</html>
