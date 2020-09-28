@@ -86,19 +86,28 @@
   </script>
   <script src="../node_modules/monaco-editor/min/vs/loader.js"></script>
   <script>
-    let editor = null;
-    const defaultOptions = {
-      // value: ['function x() {', '\tconsole.log("Hello world!");', '}'].join('\n'),
-      language: 'javascript',
-      theme: 'vs-dark', // 'vs'(default), 'vs-dark', 'hc-dark'
-      minimap: {
-        enabled: false,
+    const KyonRun = { // namespace
+      defaultOptions: {
+        // value: ['function x() {', '  console.log("Hello world!");', '}'].join('\n'),
+        language: 'javascript',
+        theme: 'vs-dark', // 'vs'(default), 'vs-dark', 'hc-dark'
+        minimap: {
+          enabled: false,
+        },
+        extraEditorClassName: 'kyon-run-editor',
+        wordWrap: 'on',
+        automaticLayout: true,
+        padding: {
+          top: 10,
+        },
       },
-      extraEditorClassName: 'kyon-run-editor',
-      wordWrap: 'on',
-      automaticLayout: true,
-      padding: {
-        top: 10,
+      setConstProperty: function(key, value) {
+        Object.defineProperty(this, key, {
+          value,
+          configurable: false,
+          enumerable: true,
+          writable: false,
+        });
       },
     };
     
@@ -108,10 +117,11 @@
     });
 
     require(['vs/editor/editor.main'], function () {
-      editor = monaco.editor.create(editorContainer, {
-        ...defaultOptions,
+      const monacoInstance = monaco.editor.create(editorContainer, {
+        ...KyonRun.defaultOptions,
         value: ['function x() {', '  console.log("Hello world!");', '}'].join('\n'),
       });
+      KyonRun.setConstProperty('editor', monacoInstance);
     });
     // */
   </script>
