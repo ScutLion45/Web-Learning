@@ -87,6 +87,7 @@ function stringify (data, replacer = null, space = '') {
   };
 
   // 转译
+  const cache = new WeakMap();  // 用于判断循环引用与缓存结果
   const translate = (key, origin, level) => {
     // key:    数据的键
     // origin: 数据的原始值
@@ -102,6 +103,18 @@ function stringify (data, replacer = null, space = '') {
       case 'null': return 'null';
       case 'bigint': throw new TypeError('Do not know how to serialize a BigInt');
       case 'array': {
+        // 判断是否循环引用
+        if (cache.has(data)) {
+          // 判断是否有可用缓存结果
+          if (cache.get(data).hasOwnProperty('result')) {
+            return cache.get(data).result;
+          }
+          // 存在`data`项，但没有可用缓存结果，表示循环引用
+          throw new TypeError('Converting circular structure to JSON');
+        } else {
+          // cache中没有记录，设置新的记录
+          cache.set(data, {});
+        }
         const result = data.map(item => {
           let res = translate('', item, level+1);
           switch (res) {
@@ -111,7 +124,10 @@ function stringify (data, replacer = null, space = '') {
               return res;
           }
         });
-        return formatArray(result, level);
+        const formatted = formatArray(result, level);
+        // 更新缓存结果，这里能确保cache中有`data`项
+        cache.get(data).result = formatted;
+        return formatted;
       }
       // case 'object':
       default: {
@@ -119,10 +135,22 @@ function stringify (data, replacer = null, space = '') {
           // 自有属性或原型属性
           return data.toJSON();
         }
-        let res = [];
+        // 判断是否循环引用
+        if (cache.has(data)) {
+          // 判断是否有可用缓存结果
+          if (cache.get(data).hasOwnProperty('result')) {
+            return cache.get(data).result;
+          }
+          // 存在`data`项，但没有可用缓存结果，表示循环引用
+          throw new TypeError('Converting circular structure to JSON');
+        } else {
+          // cache中没有记录，设置新的记录
+          cache.set(data, {});
+        }
         // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/entries
         // `Object.entries()`方法返回一个给定对象自身可枚举属性的键值对数组(迭代器)，其排列与使用 `for...in` 循环遍历该对象时返回的顺序一致
         // （区别在于 `for-in` 循环还会枚举原型链中的属性）。
+        let res = [];
         for (let [key, value] of Object.entries(data)) {
           if ('symbol' === getType(key)) {
             continue;
@@ -134,7 +162,10 @@ function stringify (data, replacer = null, space = '') {
           // 对象需要缩进时，tVal前面有一个空格
           res.push(`"${key}":${needBeautify ? ' ' : ''}${tVal}`);
         }
-        return formatObject(res, level);
+        const formatted = formatObject(res, level);
+        // 更新缓存结果，这里能确保cache中有`data`项
+        cache.get(data).result = formatted;
+        return formatted;
       }
     }
   };

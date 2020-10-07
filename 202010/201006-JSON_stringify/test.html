@@ -47,6 +47,10 @@ const sf = stringify;
 
 let r1 = jsf(data, replacer, '--');
 let r2 = sf(data, replacer, '--');
+
+let arr1 = [1, 2];
+let arr2 = [arr1, 2];
+arr1[1] = arr2;
   </script>
   <!-- <script type="text/javascript"></script> -->
 </body>
