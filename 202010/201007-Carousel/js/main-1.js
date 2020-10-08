@@ -11,11 +11,12 @@ var sliderApp = new Vue({
       ],
       currentIndex: 0,
       distance: -600,
+      // move节流
       transitionEnd: true,
-      animateTimer: null,
+      // 动画开关
+      animateTrigger: true,
       // 自动轮播与停止
       autoplayTimer: null,
-      animateTrigger: true,
     };
   },
   computed: {
@@ -63,14 +64,18 @@ var sliderApp = new Vue({
           this.distance = -3000;
         }, 300);
       }
-      
+
       // dot
       direction === -1 ?
         this.currentIndex += offset/600:
         this.currentIndex -= offset/600;
-      if (this.currentIndex >= this.sliders.length) this.currentIndex = 0;
-      if (this.currentIndex < 0) this.currentIndex = this.sliders.length - 1;
-    
+      // if (this.currentIndex >= this.sliders.length) this.currentIndex = 0;
+      // if (this.currentIndex < 0) this.currentIndex = this.sliders.length - 1;
+
+      // 上面两行等效于
+      const len = this.sliders.length;
+      this.currentIndex = (this.currentIndex + len) % len;
+
     },
     jump (index) {
       // console.log('jump to:', index, 'currentIndex:', this.currentIndex);
@@ -79,8 +84,6 @@ var sliderApp = new Vue({
       const direction = index - this.currentIndex >= 0 ? -1 : 1;
       // 获取滑动距离
       const offset = Math.abs(index - this.currentIndex) * 600;
-      // 设置滑动速度
-      // const jumpSpeed = Math.abs(index - this.currentIndex) * 30
       // 调用move
       this.move(offset, direction);
     },
