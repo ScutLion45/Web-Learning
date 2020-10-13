@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <!-- <style></style> -->
+</head>
+<body>
+  <!-- <script src="pieChart-1.js"></script> -->
+  <script src="pieChart.js"></script>
+  <script type="text/javascript">
+    const pieChartOptions = {
+      data: [5.0922, 6.1101, 6.1109,
+             6.1229, 7.0201, 7.0324,
+             8.0528, 9.0423, 9.0614],
+      width: 640, height: 400,
+      cx: 200, cy: 200, r: 150,
+      color: ['#49c0ec', '#a3cc54', '#e67ea3',
+              '#8c79b4', '#f9cc85', '#71c7d4',
+              '#fefefe', '#e62722', '#2252a3'],
+      legend: ['NAYEON', 'JEONGYEON', 'MOMO',
+               'SANA', 'JIHYO', 'MINA',
+               'DAHYUN', 'CHAEYOUNG', 'TZUYU'],
+      lx: 400, ly: 100, 
+    };
+    document.body.appendChild(pieChart(pieChartOptions));
+
+  </script>
+</body>
+</html>
