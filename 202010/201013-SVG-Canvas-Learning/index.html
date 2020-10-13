@@ -2,7 +2,7 @@
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8">
-    <title>201013-SVG-Learning</title>
+    <title>201013-SVG-Canvas-Learning</title>
     <style>
       html, body {
         margin: 0;
@@ -49,6 +49,21 @@
         <circle cx="5" cy="5" r="5" fill="blue" />
       </svg>
     </div>
+    <div class="container" id="c3">
+      <canvas width="1000px"></canvas>
+    </div>
+    <script src="koch.js"></script>
+    <script>
+      const c3 = document.querySelector("#c3 canvas").getContext('2d');
+
+      snowFlake(c3, 0, 5, 115, 125);    // 0级别的雪花就是一个三角形
+      snowFlake(c3, 1, 145, 115, 125);  // 1级别的雪花就是一个六角星
+      snowFlake(c3, 2, 285, 115, 125);  // 以此类推
+      snowFlake(c3, 3, 425, 115, 125);
+      snowFlake(c3, 4, 565, 115, 125);
+
+      c3.stroke();
+    </script>
     <!-- <script></script> -->
   </body>
 </html>
