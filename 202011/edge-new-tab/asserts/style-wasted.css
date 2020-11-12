@@ -1,0 +1,131 @@
+body, html {
+  font-family: Segoe UI, Segoe UI Midlevel, Segoe WP, Arial, Sans-Serif;
+  margin: 0;
+  background: #F7F7F7;
+  height: 100%;
+}
+
+.MSNewsLayout-DS-EntryPoint1-1 {
+  background: #F7F7F7;
+  color: #262626;
+}
+
+.MSNewsLayout-DS-EntryPoint1-2 {
+  background: #F7F7F7;
+  color: #262626;
+}
+
+/* 田 Microsoft */
+.logo-DS-EntryPoint1-1 {
+  z-index: 301;
+  position: relative;
+}
+
+.logoIconLight-DS-EntryPoint1-1 {
+  fill: #737373;
+}
+
+/* search */
+.search-DS-EntryPoint1-1 {
+  margin: auto;
+  position: relative;
+  width: fit-content;
+  z-index: 302;
+}
+
+.form-DS-EntryPoint1-3 {
+  border: 0 none #e5e5e5;
+  border-radius: 4px;
+  box-shadow: 0px 1.6px 3.6px rgba(0, 0, 0, 0.13), 0px 0px 2.9px rgba(0, 0, 0, 0.11);
+  cursor: text;
+  margin: auto;
+  transition: all .2s ease-in-out;
+  height: 44px;
+  background: url(data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==);
+}
+
+.searchbox_fake-DS-EntryPoint1-1 {
+  visibility: visible;
+}
+
+.alignSearchElements-DS-EntryPoint1-1 {
+  border: none;
+  border-radius: inherit;
+  height: 100.1%;
+  background: #FFFFFF;
+}
+
+.inputContainer-DS-EntryPoint1-3 {
+  border-radius: inherit;
+  width: 100%;
+}
+
+.inputContainer-DS-EntryPoint1-1 {
+  box-sizing: border-box;
+  float: left;
+  height: 100%;
+  width: 100%;
+  background: #FFFFFF;
+}
+
+@media (max-width: 979px) {
+  .input-DS-EntryPoint1-3 {
+    width: 295px;
+  }
+}
+
+.input-DS-EntryPoint1-3 {
+  height: 44px;
+  background: #FFFFFF;
+  color: #262626;
+}
+
+.input-DS-EntryPoint1-1 {
+  background: transparent;
+  border: 0;
+  box-sizing: border-box;
+  font-size: 15px;
+  font-weight: 400;
+  height: 100%;
+  outline: 0;
+  padding: 0 10px 0 11px;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.buttonContainer-DS-EntryPoint1-3 {
+  left: initial;
+  right: 0;
+  border-radius: 0 4px 4px 0;
+}
+
+.buttonContainer-DS-EntryPoint1-1 {
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  right: 0px;
+}
+
+.button-DS-EntryPoint1-5 {
+  align-items: center;
+  display: flex;
+  height: 44px;
+  justify-content: center;
+  padding: 0;
+  width: 68px;
+  border-radius: 0 4px 4px 0;
+  background-color: #0078D4;
+}
+
+.button-DS-EntryPoint1-1 {
+  background-color: rgba(0, 120, 215, .8);
+  border: none;
+  color: #FFF;
+  cursor: pointer;
+  float: left;
+  font-size: 15px;
+  font-weight: 400;
+  height: 100%;
+  overflow: hidden;
+  text-align: center;
+}

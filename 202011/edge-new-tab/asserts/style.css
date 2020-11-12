@@ -1,0 +1,134 @@
+body, html {
+  font-family: Segoe UI, Segoe UI Midlevel, Segoe WP, Arial, Sans-Serif;
+  margin: 0;
+  background: #F7F7F7;
+  height: 100%;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  /* flex-direction: column; */
+
+  transition: all 0.2s ease;
+}
+
+/* .main-container */
+.main-container {
+  flex-direction: column;
+}
+
+/* .logo-container */
+.logo-container .logoIconLight-DS-EntryPoint1-1 path#microsoft {
+  fill:  #737373;
+}
+
+/* .search-container */
+.search-container form {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+  .search-container form .search-bar {
+    border: 0;
+    border-radius: 4px;
+    margin: auto;
+    height: 100%;
+    padding: 0;
+    display: inline-block;
+
+    box-shadow: 0px 1.6px 3.6px rgba(0, 0, 0, 0.13), 0px 0px 2.9px rgba(0, 0, 0, 0.11);
+    transition: all 0.3s ease;
+
+    position: relative;
+  }
+
+  .search-container form .search-bar:hover {
+    box-shadow: 0px 1.6px 3.6px 2.2px rgba(0, 0, 0, 0.11), 0px 0px 2.9px rgba(0, 0, 0, 0.09);
+  }
+
+
+    /* .input-container */
+    .search-container form .input-container {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+      /* .input-DS-EntryPoint */
+      .search-container form .input-DS-EntryPoint {
+        height: 44px;
+        background: #FFFFFF;
+        color: #262626;
+        border: 0;
+        box-sizing: border-box;
+        font-size: 15px;
+        font-weight: 400;
+        height: 100%;
+        outline: 0;
+        padding: 0 10px 0 11px;
+        text-overflow: ellipsis;
+        text-align: left;
+        /* width: 100%; */
+        transition: all 0.2s ease;
+      }
+
+      @media (min-width: 1304px) {
+        .input-DS-EntryPoint {
+          width: 655px;
+        }
+      }
+
+      @media (max-width: 1303px) and (min-width: 980px) {
+        .input-DS-EntryPoint {
+          width: 423px;
+        }
+      }
+
+      @media (max-width: 979px) {
+        .input-DS-EntryPoint {
+          width: 295px;
+        }
+      }
+
+    /* .button-container */
+    .search-container form .button-container {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+      /* .button-DS-EntryPoint */
+      .search-container form .button-DS-EntryPoint {
+        display: flex;
+        height: 44px;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        width: 68px;
+
+        border-radius: 0 4px 4px 0;
+        border: 0;
+        background-color: #1683D8;
+        /* overflow: hidden; */
+
+        outline: none;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .search-container form .button-DS-EntryPoint:hover {
+        background-color: #006CBE;
+      }
