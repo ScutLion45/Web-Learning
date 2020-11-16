@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <title>201116-WebComponents</title>
+    <style>
+      html, body {
+        text-align: center;
+      }
+    </style>
+
+  </head>
+  <body>
+    <!-- Ver.1 -->
+    <!-- <script type="text/javascript" src="js/test-1.js"></script> -->
+    <!-- <user-card></user-card> -->
+    <!-- ... -->
+    <!-- Ver.2 -->
+    <user-card
+      avatar="img/avatar.png"
+      name="User Name"
+      email="user@example.com"
+    >
+      <span slot="popup" style="color: red">world</span>
+    </user-card>
+    <template id="userCardTemplate">
+      <style>
+        :host {
+          display: flex;
+          align-items: center;
+          text-align: left;
+          width: 450px;
+          height: 180px;
+          background-color: #d4d4d4;
+          border: 1px solid #d5d5d5;
+          box-shadow: 0px 2px 8px rgba(0, 0, 0, .35);
+          border-radius: 3px;
+          overflow: hidden;
+          padding: 10px;
+          box-sizing: border-box;
+          font-family: 'Poppins', sans-serif;
+          margin: auto;
+        }
+        .avatar {
+          flex: 0 0 auto;
+          width: 160px;
+          height: 160px;
+          vertical-align: middle;
+          border-radius: 5px;
+        }
+        .container {
+          box-sizing: border-box;
+          padding: 20px;
+          height: 160px;
+
+          position: relative;
+        }
+        .container > .name {
+          font-size: 20px;
+          font-weight: 600;
+          line-weight: 1;
+          margin: 0;
+          margin-bottom: 15px;
+        }
+        .container > .email {
+          font-size: 12px;
+          opacity: 0.75;
+          line-height: 1;
+          margin: 0;
+          margin-bottom: 15px;
+        }
+        .container > .follow {
+          padding: 10px 25px;
+          font-size: 12px;
+          border: 0;
+          border-radius: 5px;
+          outline: none;
+          cursor: pointer;
+          text-transform: uppercase;
+          transition: background 0.3s ease;
+        }
+        .container > .follow:hover {
+          color: #ddd;
+          background: #4f4f4f;
+        }
+        /* popup */
+        .popup {
+          position: absolute;
+          top: -3px;
+          user-select: none;
+          opacity: 0;
+          transition: opacity .3s ease;
+        }
+        /* 紧跟在hover状态下的.avatar的.container的.popup子元素的样式 */
+        .avatar:hover + .container .popup { opacity: 1; }
+      </style>
+
+      <img class="avatar">
+      <div class="container">
+        <span class="popup">:) <slot name="popup">hello</slot></span>
+        <p class="name"></p>
+        <p class="email"></p>
+        <button type="button" class="follow">Follow</button>
+      </div>
+    </template>
+    <script type="text/javascript">
+      class UserCard extends HTMLElement {
+        constructor() {
+          super();
+          const shadow = this.attachShadow({ mode: 'closed' });
+
+          const templateElem = document.getElementById('userCardTemplate');
+          const content = templateElem.content.cloneNode(true);
+          content.querySelector('.avatar').setAttribute('src', this.getAttribute('avatar'));
+          content.querySelector('.name').textContent = this.getAttribute('name');
+          content.querySelector('.email').textContent = this.getAttribute('email');
+
+          shadow.appendChild(content);
+        }
+      }
+      window.customElements.define('user-card', UserCard);
+    </script>
+  </body>
+</html>
