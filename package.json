@@ -1,0 +1,15 @@
+{
+  "name": "web-learning",
+  "version": "1.0.0",
+  "description": "@2020 Web Learning Notes",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "ScutLion45",
+  "license": "ISC",
+  "devDependencies": {
+    "chalk": "^4.1.0"
+  }
+}

@@ -1,1 +1,11 @@
+# dependecies
 **/node_modules
+
+# scripts
+# generate_readme.script.js
+
+# config files
+**/.vscode
+
+# root package.json
+# package.json
